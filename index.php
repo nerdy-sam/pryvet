@@ -32,7 +32,7 @@ switch($action) {
 
 function getStorage() {
 	$m = new MongoDB(); // edit to pass URL of MongoDB server
-	return $m->pryvet->secrets
+	return $m->pryvet->secrets;
 }
 
 function hashId() {
