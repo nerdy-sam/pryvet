@@ -9,21 +9,21 @@
  * @license MIT License http://opensource.org/licenses/mit-license.php
  */
  
-//spl_autoload_register();
+spl_autoload_register();
 
-//$phpass = new PasswordHash(8,false);
+$phpass = new PasswordHash(8,false);
 
-$content = ''; //$phpass->get_random_bytes(24);
+$content = $phpass->get_random_bytes(24);
 
 
 // router
 $action = '';
 
 switch($action) {
-    case:
+    case 'persist':
 		persist();
 		break;
-	case:
+	case 'retrieve':
 		retrieve();
 		break;
 	default:
