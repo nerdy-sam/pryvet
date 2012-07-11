@@ -13,7 +13,7 @@ spl_autoload_register();
 
 $phpass = new PasswordHash(8,false);
 
-$content = $phpass->get_random_bytes(24);
+$content = $phpass->encode64($phpass->get_random_bytes(24),24);
 
 
 // router
