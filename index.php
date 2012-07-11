@@ -3,25 +3,24 @@
  * Pryvet: for secret messages.
  *
  * A safe way to send private information through any medium
- * that can contain a hyperlink.
+ * that is capable of conveying a hyperlink.
  *
  * @author DavidMitchel.com
  * @license MIT License http://opensource.org/licenses/mit-license.php
  */
+ 
+spl_autoload_register();
 
-$content = '';
-$salt = 'wj]e=<>;,[.70!=K;4.I--+&;<7)<P'; // change this
+$phpass = new PasswordHash(8,false);
 
-function db() {
-	$m = new MongoDB();
-	return $m->pryvet->secrets
-}
+$content = $phpass->get_random_bytes(24);
+
 
 // router
-$action = 
+$action = '';
 
 switch($action) {
-	case:
+    case:
 		persist();
 		break;
 	case:
@@ -31,23 +30,31 @@ switch($action) {
 		break;
 }
 
+function getStorage() {
+	$m = new MongoDB(); // edit to pass URL of MongoDB server
+	return $m->pryvet->secrets
+}
+
+function hashId() {
+    
+}
+
 // view/decrypt message
 function retrieve() {
-	$secrets = db();
+	$secrets = getStorage();
 
         $content = '';
 }
 
 // save encrypted message to db
 function persist() {
-	$secrets = db();
-	$mongoid = new MongoId();
+	$secrets = getStorage();
 	$secret = array(
-		'_id' => $mongoid,
+        '_id' => $hash,
 		'secret' => $ciphertext
 		);
 	if ($_POST['confirmation']) {
-		$secret[confirmation] = $_POST['confirmation'];
+		$secret['confirmation'] = $_POST['confirmation'];
 	}
 	$secrets->insert($secret);
 	$content = '';
