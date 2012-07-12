@@ -15,7 +15,7 @@ $phpass = new PasswordHash(8,false);
 
 $content = $phpass->encode64($phpass->get_random_bytes(24),1);
 
-echo $strlen($content);
+echo strlen($content);
 
 
 // router
