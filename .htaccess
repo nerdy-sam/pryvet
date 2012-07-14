@@ -325,6 +325,8 @@ FileETag None
 <IfModule mod_rewrite.c>
   Options +FollowSymlinks
   RewriteEngine On
+  RewriteEngine on
+  RewriteRule !\.(js|ico|gif|jpg|png|css)$ index.php
 </IfModule>
 
 
@@ -349,11 +351,11 @@ FileETag None
 # Option 1:
 # Rewrite "www.example.com -> example.com"
 
-<IfModule mod_rewrite.c>
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
-</IfModule>
+#<IfModule mod_rewrite.c>
+#  RewriteCond %{HTTPS} !=on
+#  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+#  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+#</IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -362,11 +364,11 @@ FileETag None
 # Be aware that the following rule might not be a good idea if you
 # use "real" subdomains for certain parts of your website.
 
-# <IfModule mod_rewrite.c>
-#   RewriteCond %{HTTPS} !=on
-#   RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-#   RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-# </IfModule>
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+  RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
 
 
 
@@ -490,45 +492,45 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # reset everything to PHP defaults. Consult www.php.net for more detailed
 # information about setting PHP directives.
 
-# php_flag register_globals Off
+php_flag register_globals Off
 
 # Rename session cookie to something else, than PHPSESSID
-# php_value session.name sid
+php_value session.name pvsid
 
 # Do not show you are using PHP
 # Note: Move this line to php.ini since it won't work in .htaccess
 # php_flag expose_php Off
 
 # Level of log detail - log all errors
-# php_value error_reporting -1
+php_value error_reporting -1
 
 # Write errors to log file
-# php_flag log_errors On
+php_flag log_errors On
 
 # Do not display errors in browser (production - Off, development - On)
-# php_flag display_errors Off
+php_flag display_errors Off
 
 # Do not display startup errors (production - Off, development - On)
-# php_flag display_startup_errors Off
+php_flag display_startup_errors Off
 
 # Format errors in plain text
 # Note: Leave this setting 'On' for xdebug's var_dump() output
-# php_flag html_errors Off
+php_flag html_errors Off
 
 # Show multiple occurrence of error
-# php_flag ignore_repeated_errors Off
+php_flag ignore_repeated_errors Off
 
 # Show same errors from different sources
-# php_flag ignore_repeated_source Off
+php_flag ignore_repeated_source Off
 
 # Size limit for error messages
-# php_value log_errors_max_len 1024
+php_value log_errors_max_len 1024
 
 # Don't precede error with string (doesn't accept empty string, use whitespace if you need)
-# php_value error_prepend_string " "
+php_value error_prepend_string " "
 
 # Don't prepend to error (doesn't accept empty string, use whitespace if you need)
-# php_value error_append_string " "
+php_value error_append_string " "
 
 # Increase cookie security
 <IfModule php5_module>
