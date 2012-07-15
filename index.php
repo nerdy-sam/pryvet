@@ -12,7 +12,7 @@
 spl_autoload_register();
 
 if (isset($_POST['message'])) {
-	die('{status:"ok"}');
+	die("{status:\"ok\",message:$_POST['message']}");
 }
 
 // router
