@@ -18,7 +18,7 @@ $('#secret').submit(function() {
 			// error checking needed
 		});
 	var secretURL = "http://www.pryvet.com/" + secretKey + "/" + document.secret.hash.value;
-	var success = '<h4>The URL to access your secret message:</h4><h5>' + secretURL + '</h5><p>Email the above link to your secret friend.</p> ';
+	var success = '<h2>The URL to access your secret message:</h2><h3>' + secretURL + '</h3><p>Email the above link to your secret friend.</p> ';
 	$('.hero-unit').empty();
 	$('.hero-unit').append(success);
 	$('.hero-unit').addClass('alert alert-success').removeClass('hero-unit');
