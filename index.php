@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
 	<!-- Insert secret viewer here -->
 	<script>
 		var secret = jQuery.parseJSON('<?php echo json_encode($secret['message']); ?>');
-		document.write(sjcl.decrypt(secret));
+		document.write(sjcl.decrypt(window.location.href.split('/')[3],secret));
 	</script>
 
 <?php } ?>
