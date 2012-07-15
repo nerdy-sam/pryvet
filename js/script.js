@@ -19,7 +19,7 @@ $('#secret').submit(function() {
 		});
 	var secretURL = "http://www.pryvet.com/" + secretKey + "/" + document.secret.hash.value;
 	$('.hero-unit').empty();
-	$('.hero-unit').append('<span>secretURL</span>');
+	$('.hero-unit').append('<span>' + secretURL + '</span>');
 	$('.hero-unit').addClass('alert alert-success').removeClass('hero-unit');
 	return false;
 });
