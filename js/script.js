@@ -2,8 +2,11 @@
 
 */
 
+sjcl.random.startCollectors();
+
 $('#secret').submit(function() {
-	var secretObj = sjcl.encrypt("password", document.secret.message.value);
-	alert(secretObj['ct']);
+	var secretKey = sjcl.random.randomWords(1);
+	var secretObj = jQuery.parseJSON(sjcl.encrypt(secretKey, document.secret.message.value));
+	alert(secretObj.ct);
 	return false;
 });
