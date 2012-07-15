@@ -21,7 +21,7 @@ function getStorage() {
 if (isset($_POST['message']) && isset($_POST['hash'])) {
 	$secret = array(
 		'_id' => $_POST['hash'],
-		'secret' => json_decode($_POST['message'], true)
+		'message' => json_decode($_POST['message'], true)
 		);
      $secrets = getStorage();
      $secrets->insert($secret);
@@ -50,17 +50,17 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
 
 	<meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet/less" href="less/style.less">
-	<script src="js/libs/less-1.3.0.min.js"></script>
+	<link rel="stylesheet/less" href="/less/style.less">
+	<script src="/js/libs/less-1.3.0.min.js"></script>
 
 	<!-- Use SimpLESS (Win/Linux/Mac) or LESS.app (Mac) to compile your .less files
 	to style.css, and replace the 2 lines above by this one:
 
-	<link rel="stylesheet" href="less/style.css">
+	<link rel="stylesheet" href="/less/style.css">
 	 -->
 
-	<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
-	<script src="js/libs/sjcl.min.js"></script>
+	<script src="/js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+	<script src="/js/libs/sjcl.min.js"></script>
 </head>
 <body>
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -110,10 +110,10 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
 
     </div> <!-- /container -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
-<script src="js/libs/bootstrap/bootstrap.min.js"></script>
+<script src="/js/libs/bootstrap/bootstrap.min.js"></script>
 
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>
