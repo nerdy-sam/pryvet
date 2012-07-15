@@ -1,6 +1,6 @@
 <?php
 /**
- * Pryvet: for secret messages.
+ * Pryvet: for secret messages
  *
  * A safe way to send private information through any medium
  * that is capable of conveying a hyperlink.
@@ -11,57 +11,29 @@
 
 spl_autoload_register();
 
-if (isset($_POST['message'])) {
-	$secret = json_decode($_POST['message'], true);
+// connect to MongoDB
+function getStorage() {
+     $m = new Mongo($_ENV['MONGOLAB_URI']); // edit to pass URL of MongoDB server
+     return $m->pryvet->secrets;
+}
+
+if (isset($_POST['message']) && isset($_POST['hash'])) {
+	$secret = array(
+		'_id' => $_POST['hash'],
+		'secret' => json_decode($_POST['message'], true)
+		);
+     $secrets = getStorage();
+     $secrets->insert($secret);
 	die('{status:"ok"}');
 }
 
-// router
-$action = '';
-
-switch($action) {
-    case 'persist':
-		persist();
-		break;
-	case 'retrieve':
-		retrieve();
-		break;
-	default:
-		break;
-}
-
-function getStorage() {
-	$m = new Mongo(); // edit to pass URL of MongoDB server
-	return $m->pryvet->secrets;
-}
-
-function hashId() {
-
-}
-
-// view/decrypt message
-function retrieve() {
-	$secrets = getStorage();
-
-        $content = '';
-}
-
-// save encrypted message to db
-function persist() {
-	$secrets = getStorage();
-	$secret = array(
-        '_id' => $hash,
-		'secret' => $ciphertext
-		);
-
-    if ($_POST['confirmation']) {
-		$secret['confirmation'] = $_POST['confirmation'];
-	}
-	$secrets->insert($secret);
-	$content = '';
+if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
+	$parsedURI = explode('/', $_SERVER['REQUEST_URI']);
+     $secret = array('_id' => $parsedURI[2]);
+     $secrets = getStorage();
+     $secret = $secrets->findOne($secret);
 }
 ?>
-
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -71,7 +43,7 @@ function persist() {
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>pryvet: for secret messages.</title>
+	<title>pryvet: for secret messages</title>
 	<meta name="description" content="A safe way to send private information through any medium that is capable of conveying a hyperlink.">
 	<meta name="author" content="DavidMitchel.com">
 
@@ -100,7 +72,7 @@ function persist() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">pryvet: for secret messages.</a>
+          <a class="brand" href="#">pryvet: for secret messages</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/">Home</a></li>
@@ -114,6 +86,7 @@ function persist() {
 
     <div class="container">
 
+<?php if (!$secret) { ?>
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
 		<form id="secret" class="well center" name="secret" action="" method="post">
@@ -122,7 +95,11 @@ function persist() {
 			<input id="submit" type="submit" class="btn btn-primary" value="Make Secret Message">
 		</form>
       </div>
+<?php } else { ?>
 
+	<!-- Insert secret viewer here -->
+
+<?php } ?>
       <hr>
 
       <footer>
