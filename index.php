@@ -22,8 +22,8 @@ if (isset($_POST['message']) && isset($_POST['hash'])) {
 		'_id' => $_POST['hash'],
 		'secret' => json_decode($_POST['message'], true)
 		);
-     $secrets = getStorage();
-     $secrets->insert($secret);
+//     $secrets = getStorage();
+//     $secrets->insert($secret);
 	die('{status:"ok"}');
 }
 
