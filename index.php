@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
      $secret = array('_id' => $parsedURI[2]);
      $secrets = getStorage();
      $secret = $secrets->findOne($secret);
+	$secrets->remove($secret);
 }
 ?>
 <!doctype html>
