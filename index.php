@@ -66,7 +66,7 @@ function persist() {
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title>Pryvet: for secret messages.</title>
+	<title>pryvet: for secret messages.</title>
 	<meta name="description" content="A safe way to send private information through any medium that is capable of conveying a hyperlink.">
 	<meta name="author" content="DavidMitchel.com">
 
@@ -95,7 +95,7 @@ function persist() {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Pryvet: for secret messages.</a>
+          <a class="brand" href="#">pryvet: for secret messages.</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="/">Home</a></li>
