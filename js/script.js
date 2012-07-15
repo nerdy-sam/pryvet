@@ -4,6 +4,6 @@
 
 $('#secret').submit(function() {
 	var secretObj = sjcl.encrypt("password", document.secret.message.value);
-	alert(secretObj);
+	alert(secretObj['ct']);
 	return false;
 });
