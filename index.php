@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
 <?php } else { ?>
 
 	<!-- Insert secret viewer here -->
-	<script>document.write(sjcl.decrypt('<?=$secret['message']?>');</script>
+	<script>document.write(sjcl.decrypt('<?php echo json_encode($secret['message']); ?>');</script>
 
 <?php } ?>
       <hr>
