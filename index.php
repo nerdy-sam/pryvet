@@ -118,7 +118,6 @@ function persist() {
       <div class="hero-unit">
 		<form id="secret" class="well center" name="secret" action="" method="post">
 			<input id="hash" name="hash" type="hidden">
-			<fieldset>Create New Pryvet Message</fieldset>
 			<textarea wrap="off" cols="80" rows="1" id="message" name="message" placeholder="Type your secret message here." required></textarea><br>
 			<input id="submit" type="submit" class="btn btn-primary" value="Make Secret Message">
 		</form>
