@@ -11,6 +11,11 @@
 
 spl_autoload_register();
 
+if ($_POST['message']) {
+	echo '{status:"ok"}';
+	exit();
+}
+
 // router
 $action = '';
 
@@ -112,8 +117,9 @@ function persist() {
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
 		<form id="secret" name="secret" action="" method="post">
+			<input id="hash" name="hash" type="hidden">
 			<fieldset>Create New Pryvet Message</fieldset>
-			<textarea cols="50" rows="4" id="message" name="message" placeholder="Type your secret message here." required autofocus></textarea><br>
+			<textarea cols="250" rows="50" id="message" name="message" placeholder="Type your secret message here." required autofocus></textarea><br>
 			<input id="submit" type="submit">
 		</form>
       </div>
