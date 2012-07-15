@@ -1,4 +1,8 @@
-pryvet
-======
+pryvet: for secret messages
+===========================
 
-A secure way to send messages.
+TODO:
+
+mongodb
+mobile
+randomness

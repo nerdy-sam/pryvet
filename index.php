@@ -9,12 +9,12 @@
  * @license MIT License http://opensource.org/licenses/mit-license.php
  */
 
-spl_autoload_register();
-
 // connect to MongoDB
 function getStorage() {
      $m = new Mongo($_ENV['MONGOLAB_URI']); // edit to pass URL of MongoDB server
-     return $m->pryvet->secrets;
+	$dbname = str_replace("/", "", $mongo_url["path"]);
+	$db = $m->$dbname;
+     return $db->secrets;
 }
 
 if (isset($_POST['message']) && isset($_POST['hash'])) {
@@ -22,8 +22,8 @@ if (isset($_POST['message']) && isset($_POST['hash'])) {
 		'_id' => $_POST['hash'],
 		'secret' => json_decode($_POST['message'], true)
 		);
-//     $secrets = getStorage();
-//     $secrets->insert($secret);
+     $secrets = getStorage();
+     $secrets->insert($secret);
 	die('{status:"ok"}');
 }
 
@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') {
 <?php } else { ?>
 
 	<!-- Insert secret viewer here -->
+	<script>document.write(sjcl.decrypt('<?=$secret['message']?>');</script>
 
 <?php } ?>
       <hr>
