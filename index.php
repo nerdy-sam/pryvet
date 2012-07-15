@@ -11,10 +11,6 @@
 
 spl_autoload_register();
 
-$mongoTest = new Mongo();
-
-var_dump($mongoTest);
-
 if (isset($_POST['message'])) {
 	$secret = json_decode($_POST['message'], true);
 	die('{status:"ok"}');
@@ -35,7 +31,7 @@ switch($action) {
 }
 
 function getStorage() {
-	$m = new MongoDB(); // edit to pass URL of MongoDB server
+	$m = new Mongo(); // edit to pass URL of MongoDB server
 	return $m->pryvet->secrets;
 }
 
