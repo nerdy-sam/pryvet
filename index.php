@@ -11,9 +11,8 @@
 
 spl_autoload_register();
 
-if ($_POST['message']) {
-	echo '{status:"ok"}';
-	exit();
+if (isset($_POST['message'])) {
+	die('{status:"ok"}');
 }
 
 // router
