@@ -11,7 +11,7 @@ $('#message').focus(function () {
 $('#secret').submit(function() {
 	var secretKey = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(sjcl.random.randomWords(4))).substr(0,32);
 	var secretObj = sjcl.encrypt(secretKey, document.secret.message.value);
-	document.secret.hash.value = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(secretObj.ct)).substr(0,10);
+	document.secret.hash.value = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(secretObj)).substr(0,10);
 	document.secret.message.value = secretObj;
 	jQuery.post("index.php", $("#secret").serialize(),
 		function(data) {
