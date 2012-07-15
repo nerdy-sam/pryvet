@@ -13,6 +13,7 @@ $('#secret').submit(function() {
 	var secretObj = sjcl.encrypt(secretKey, document.secret.message.value);
 	document.secret.hash.value = sjcl.codec.hex.fromBits(sjcl.hash.sha256.hash(secretObj)).substr(0,10);
 	document.secret.message.value = secretObj;
+	alert($("#secret").serialize());
 	jQuery.post("index.php", $("#secret").serialize(),
 		function(data) {
 			alert(data);
