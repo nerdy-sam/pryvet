@@ -111,10 +111,11 @@ function persist() {
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-		<form action="" method="post">
+		<form id="secret" name="secret" action="" method="post">
 			<fieldset>Create New Pryvet Message</fieldset>
-				<input id="message" name="message" height="30" placeholder="Type your secret message here." required autofocus>
-				<input id="submit" type="submit">
+			<textarea cols="50" rows="4" id="message" name="message" placeholder="Type your secret message here." required autofocus></textarea>
+			<input id="submit" type="submit">
+		</form>
       </div>
 
       <hr>
