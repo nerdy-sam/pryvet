@@ -118,7 +118,7 @@ function persist() {
 		<form id="secret" name="secret" action="" method="post">
 			<input id="hash" name="hash" type="hidden">
 			<fieldset>Create New Pryvet Message</fieldset>
-			<textarea wrap="off" cols="80" rows="3" id="message" name="message" placeholder="Type your secret message here." required autofocus></textarea><br>
+			<textarea wrap="off" cols="80" rows="3" id="message" name="message" placeholder="Type your secret message here." required></textarea><br>
 			<input id="submit" type="submit">
 		</form>
       </div>
