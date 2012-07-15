@@ -11,8 +11,9 @@
 
 // connect to MongoDB
 function getStorage() {
-     $m = new Mongo($_ENV['MONGOLAB_URI']); // edit to pass URL of MongoDB server
+	$mongo_url = parse_url($_ENV['MONGOLAB_URI']);
 	$dbname = str_replace("/", "", $mongo_url["path"]);
+     $m = new Mongo($_ENV['MONGOLAB_URI']); // edit to pass URL of MongoDB server
 	$db = $m->$dbname;
      return $db->secrets;
 }
