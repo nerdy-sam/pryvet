@@ -8,7 +8,7 @@
  * @author DavidMitchel.com
  * @license MIT License http://opensource.org/licenses/mit-license.php
  */
- 
+
 spl_autoload_register();
 
 // router
@@ -31,7 +31,7 @@ function getStorage() {
 }
 
 function hashId() {
-    
+
 }
 
 // view/decrypt message
@@ -74,7 +74,7 @@ function persist() {
 
 	<link rel="stylesheet/less" href="less/style.less">
 	<script src="js/libs/less-1.3.0.min.js"></script>
-	
+
 	<!-- Use SimpLESS (Win/Linux/Mac) or LESS.app (Mac) to compile your .less files
 	to style.css, and replace the 2 lines above by this one:
 
@@ -82,6 +82,7 @@ function persist() {
 	 -->
 
 	<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+	<script src="js/libs/sjcl.min.js"></script>
 </head>
 <body>
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -97,9 +98,9 @@ function persist() {
           <a class="brand" href="#">Pryvet: for secret messages.</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/about">About</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -111,7 +112,7 @@ function persist() {
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Create New Pryvet Message</h1>
-        
+		<p><script>document.write(sjcl.encrypt("password", "data"));</script>
       </div>
 
       <hr>
