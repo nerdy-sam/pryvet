@@ -3,8 +3,8 @@
 */
 
 $('#secret').submit(function() {
-	var secretObj = sjcl.encrypt("password", document.secret.message.value);
-	alert(secretObj);
+	//var secretObj = sjcl.encrypt("password", document.secret.message.value);
+	alert("secretObj");
 	return false;
 }
 

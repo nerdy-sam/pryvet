@@ -113,7 +113,7 @@ function persist() {
       <div class="hero-unit">
 		<form id="secret" name="secret" action="" method="post">
 			<fieldset>Create New Pryvet Message</fieldset>
-			<textarea cols="50" rows="4" id="message" name="message" placeholder="Type your secret message here." required autofocus></textarea>
+			<textarea cols="50" rows="4" id="message" name="message" placeholder="Type your secret message here." required autofocus></textarea><br>
 			<input id="submit" type="submit">
 		</form>
       </div>
@@ -133,4 +133,3 @@ function persist() {
 <script src="js/script.js"></script>
 </body>
 </html>
-
