@@ -16,7 +16,7 @@ $mongoTest = new Mongo();
 var_dump($mongoTest);
 
 if (isset($_POST['message'])) {
-	$secret = json_decode($_POST['message'], true)
+	$secret = json_decode($_POST['message'], true);
 	die('{status:"ok"}');
 }
 
